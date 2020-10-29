@@ -1,0 +1,36 @@
+  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloStudent-deployment
+  labels:
+    app: helloStudent
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: helloStudent
+      labels:
+        app: helloStudent
+    spec:
+      containers:
+      - name: helloStudent
+        image: helloStudent
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: helloStudent
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloStudent-service
+spec:
+  selector:
+    app: helloStudent
+  ports:
+    - port: 80
+  type: LoadBalancer
