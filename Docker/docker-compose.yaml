@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-  helloStudent:
-    image: helloStudent
+  hellostudent:
+    image: hellostudent
     build:
       context: .
       dockerfile: Dockerfile
