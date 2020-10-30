@@ -16,7 +16,9 @@ spec:
       containers:
       - name: hellostudent
         image: hellostudent
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: IfNotPresent        
+        ports:
+        - containerPort: 5000
       restartPolicy: Always
   selector:
     matchLabels:
@@ -32,5 +34,7 @@ spec:
   selector:
     app: hellostudent
   ports:
-    - port: 80
+  - protocol: "TCP"
+    port: 80
+    targetPort: 5000
   type: LoadBalancer
