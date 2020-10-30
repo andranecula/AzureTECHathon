@@ -1,10 +1,9 @@
-FROM python:alpine3.10
-WORKDIR /app 
-COPY . /app
-RUN pip install -r requirements.txt
-EXPOSE 5000
-EXPOSE 80
-CMD python ./launch.py
+FROM python:3.7
 
-#COPY requirements.txt /app/requirements.txt
-#ENTRYPOINT ["python", "./launch.py"]
+RUN mkdir /app
+WORKDIR /app
+ADD . /app/
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+CMD ["python", "/app/launch.py"]
