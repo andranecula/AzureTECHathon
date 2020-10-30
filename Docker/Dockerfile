@@ -1,9 +1,6 @@
-FROM python:3.7
-
-RUN mkdir /app
-WORKDIR /app
+FROM python:alpine3.10
+WORKDIR /app 
 COPY . /app
 RUN pip install -r requirements.txt
-
 EXPOSE 5000
-CMD ["python", "launch.py"]
+CMD python ./launch.py
